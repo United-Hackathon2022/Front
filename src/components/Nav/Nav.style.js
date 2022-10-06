@@ -23,6 +23,7 @@ export const TitleLogoWrap = styled.div`
 export const Title = styled.div`
   font-size: 1.3rem;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const NavInfoContainer = styled.div`
@@ -107,4 +108,29 @@ export const NullContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const OauthContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const SignUp = styled.div`
+  padding: 12px;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid ${palette.gray[300]};
+`;
+
+export const SignIn = styled.div`
+  padding: 12px;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: ${palette.main};
 `;
