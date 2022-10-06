@@ -24,7 +24,7 @@ class Feed {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.getFeeds() + { type },
+        url: FeedController.getFeeds() + type,
       });
     } catch (error) {
       return error;
@@ -34,11 +34,11 @@ class Feed {
   /**
    * @returns - 피드 상세 조회
    */
-  getFeed() {
+  getFeed(id) {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.feed(),
+        url: FeedController.feed() + id,
       });
     } catch (error) {
       return error;
