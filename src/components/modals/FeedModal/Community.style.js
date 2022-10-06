@@ -2,13 +2,9 @@ import styled from '@emotion/styled';
 
 export const Feed = styled.div`
   width: 100%;
-
   height: 339px;
   background: #ffffff;
-  margin-bottom: 25px;
   padding: 20px;
-
-  color: #515151;
 `;
 
 export const ProfileSection = styled.div`
@@ -46,4 +42,15 @@ export const Desc = styled.p`
   align-items: center;
 
   color: #676767;
+`;
+
+export const Comment = styled.div`
+  border-top: 1px solid #bababa;
+  line-height: 30px;
+  background-color: #fff;
+  padding: 20px;
+
+  p {
+    font-size: 12px;
+  }
 `;
