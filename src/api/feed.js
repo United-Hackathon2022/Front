@@ -38,7 +38,7 @@ class Feed {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.feed() + id,
+        url: FeedController.feed() + `/${id}`,
       });
     } catch (error) {
       return error;
