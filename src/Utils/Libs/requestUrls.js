@@ -1,6 +1,6 @@
 export const AuthController = {
   signin: () => {
-    return `/naver/redirect`;
+    return `/auth/naver/redirect`;
   },
 };
 
