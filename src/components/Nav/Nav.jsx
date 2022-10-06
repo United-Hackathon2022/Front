@@ -8,6 +8,15 @@ const Nav = () => {
   const { pathname } = useLocation();
   const [isAlarmModal, setIsAlarmModal] = useState(false);
 
+  const [dummyData, setDummyData] = useState([
+    {
+      mentoName: '금현호',
+    },
+    {
+      mentoName: '유시온',
+    },
+  ]);
+
   return (
     <>
       <S.NavBarContainer>
@@ -54,6 +63,18 @@ const Nav = () => {
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
+          {dummyData.map((item, idx) => {
+            return (
+              <S.AlarmContainer key={idx + 1}>
+                <S.MentoName>{item.mentoName} </S.MentoName> 님이 멘토링을
+                신청하였습니다.
+                <S.AllowBtnContainer>
+                  <S.AllowBtn>승인</S.AllowBtn>
+                  <S.Cancel>거절</S.Cancel>
+                </S.AllowBtnContainer>
+              </S.AlarmContainer>
+            );
+          })}
         </S.Modal>
       )}
     </>

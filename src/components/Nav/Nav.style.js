@@ -45,13 +45,14 @@ export const LinkWrap = styled.div`
 `;
 
 export const Modal = styled.div`
-  width: 300px;
+  width: 400px;
   height: 500px;
   box-shadow: -5px 0 20px 2px ${palette.gray[300]};
   position: absolute;
   top: 80px;
-  right: 100px;
+  right: 43px;
   border-radius: 5px;
+  background-color: #fff;
 `;
 
 export const Tail = styled.div`
@@ -63,4 +64,40 @@ export const Tail = styled.div`
   background-color: #fff;
   transform: translateX(-50%);
   transform: rotate(45deg);
+`;
+
+export const AlarmContainer = styled.div`
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid ${palette.gray[300]};
+  font-size: 0.95rem;
+`;
+
+export const MentoName = styled.div`
+  font-weight: bold;
+`;
+
+export const AllowBtnContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+`;
+
+export const AllowBtn = styled.button`
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background-color: ${palette.random[5]};
+  cursor: pointer;
+  border: none;
+`;
+
+export const Cancel = styled.button`
+  text-align: center;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid ${palette.gray[300]};
 `;
