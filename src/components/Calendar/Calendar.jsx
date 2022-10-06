@@ -8,11 +8,22 @@ import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 import PERSON from '../../assets/modal_img/person.svg';
 import { BsXLg } from 'react-icons/bs';
 import { Right } from '../ModalContainer/Modals.style';
+import { useForm } from 'react-hook-form';
+import { useRecoilState } from 'recoil';
+import { MenstrualCycle } from '../../Atoms';
 
 function CalendarComponent() {
   const token = window.localStorage.getItem('accessToken');
   const [isSetting, setIsSetting] = useState(false);
   const [isCycleModal, setIsCycleModal] = useState(false);
+  // const { register, handleSubmit } = useForm();
+  const [cycle, setCycle] = useRecoilState(MenstrualCycle);
+  const [changeCycle, setChangeCycle] = useState({
+    cycle: '',
+    start: '',
+    endDay: '',
+    endMonth: '',
+  });
 
   return (
     <S.Container>
@@ -20,8 +31,20 @@ function CalendarComponent() {
         {isSetting || token ? (
           <S.Circle>
             <S.Desc>월경</S.Desc>
-            <S.Date>1일째</S.Date>
-            <S.Desc>월경의 주기는 28일 입니다.</S.Desc>
+            <S.Date>
+              {cycle.menstrualBoomDay > 31
+                ? cycle.menstrualBoomMonth + 1
+                : cycle.menstrualBoomMonth}
+              월
+              {cycle.menstrualBoomDay - 31 < 0
+                ? (cycle.menstrualBoomDay - 31) * -1
+                : cycle.menstrualBoomDay - 31}
+              일에
+              <br /> 월경시작
+            </S.Date>
+            <S.Desc>
+              월경의 주기는 {cycle.cycle && cycle.cycle}일 입니다.
+            </S.Desc>
           </S.Circle>
         ) : (
           <>
@@ -56,11 +79,33 @@ function CalendarComponent() {
                   <S.DateContainer>
                     <S.DateWrap>
                       <S.Start>시작일</S.Start>
-                      <input style={{ padding: '0 10px' }} type="date" />
+                      <input
+                        // {...register('start', { required: true })}
+                        onChange={e =>
+                          setChangeCycle({
+                            ...changeCycle,
+                            start: e.target.value.split('-')[2],
+                          })
+                        }
+                        style={{ padding: '0 10px' }}
+                        type="date"
+                      />
                     </S.DateWrap>
                     <S.DateWrap>
                       <S.End>종료일</S.End>
-                      <input style={{ padding: '0 10px' }} type="date" />
+                      <input
+                        // {...register('end', { required: true })}
+                        onChange={e => {
+                          const { value } = e.target;
+                          setChangeCycle({
+                            ...changeCycle,
+                            endDay: value.split('-')[2],
+                            endMonth: value.split('-')[1],
+                          });
+                        }}
+                        style={{ padding: '0 10px' }}
+                        type="date"
+                      />
                     </S.DateWrap>
                   </S.DateContainer>
                 </S.SelectWrap>
@@ -85,15 +130,34 @@ function CalendarComponent() {
                     <S.DateWrap>
                       <S.Start>월경 주기</S.Start>
                       <S.Cycle
-                        style={{ padding: '0 10px' }}
+                        onChange={e =>
+                          setChangeCycle({
+                            ...changeCycle,
+                            cycle: e.target.value,
+                          })
+                        }
+                        style={{ padding: '4px 10px' }}
                         type="text"
-                        placeholder="댓글 달기"
+                        placeholder="입력란"
                       />
                     </S.DateWrap>
                   </S.DateContainer>
                 </S.SelectWrap>
 
-                <S.SubmitBtn>제출하기</S.SubmitBtn>
+                <S.SubmitBtn
+                  onClick={() => {
+                    setCycle({
+                      cycle: changeCycle.cycle,
+                      menstrualBoomDay:
+                        Number(changeCycle.endDay) + Number(changeCycle.cycle),
+                      menstrualBoomMonth: Number(changeCycle.endMonth),
+                    });
+                    setIsCycleModal(false);
+                    setIsSetting(true);
+                  }}
+                >
+                  제출하기
+                </S.SubmitBtn>
               </S.RightWrap>
             </S.CycleModalContainer>
           </S.CycleModalBackground>
