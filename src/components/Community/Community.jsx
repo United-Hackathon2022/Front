@@ -35,7 +35,7 @@ const Community = () => {
               type="radio"
               {...register('type', { required: true })}
             />
-            <div>멘토에게 질문</div>
+            <div>멘토 구하기</div>
           </label>
 
           <label>

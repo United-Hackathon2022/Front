@@ -9,6 +9,7 @@ const User = () => {
   const getUserData = async () => {
     const { data } = await Users.getUser();
     setUserData(data);
+    console.log(data);
   };
 
   useEffect(() => {
@@ -16,26 +17,31 @@ const User = () => {
   }, []);
 
   return (
-    <S.UserContainer>
-      <S.Title>내정보</S.Title>
-      <S.UserInfoContainer>
-        <S.ProfileImg />
-        <div>
-          <S.UserInfo>
-            <S.UserName>
-              {/* {userData && userData} */} 유시온
-              <S.FollowBtn>
-                <AiOutlineCheck />
-                팔로잉
-              </S.FollowBtn>
-            </S.UserName>
-            {/* <div>{userData && userData}</div> */}
-            <div>1PXKA2</div>
-          </S.UserInfo>
-          {/* <S.FollowNumber>팔로잉 6 | 팔로워 7</S.FollowNumber> */}
-        </div>
-      </S.UserInfoContainer>
-    </S.UserContainer>
+    <>
+      {userData && (
+        <S.UserContainer>
+          <S.Title></S.Title>
+          <S.UserInfoContainer>
+            <S.ProfileImg />
+            <div>
+              <S.UserInfo>
+                <S.UserName>
+                  {/* {userData && userData} */}
+                  {userData.name}
+                  <S.FollowBtn>
+                    <AiOutlineCheck />
+                    팔로잉
+                  </S.FollowBtn>
+                </S.UserName>
+                {/* <div>{userData && userData}</div> */}
+                <div>{userData.auth_code}</div>
+              </S.UserInfo>
+              {/* <S.FollowNumber>팔로잉 6 | 팔로워 7</S.FollowNumber> */}
+            </div>
+          </S.UserInfoContainer>
+        </S.UserContainer>
+      )}
+    </>
   );
 };
 
