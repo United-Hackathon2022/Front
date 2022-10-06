@@ -11,7 +11,9 @@ const RequestApi = (p: AxiosRequestConfig, token?: string) => {
           data: p.data,
           withCredentials: true,
           headers: {
-            cookie: token,
+            Authorization: `Bearer ${window.localStorage.getItem(
+              'accessToken',
+            )}`,
           },
         })
       : axios({
