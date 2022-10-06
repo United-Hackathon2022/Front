@@ -1,12 +1,13 @@
 import * as S from './Nav.style';
 import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { BsPersonCircle, BsBell } from 'react-icons/bs';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const Nav = () => {
   const { pathname } = useLocation();
   const [isAlarmModal, setIsAlarmModal] = useState(false);
+  const navigate = useNavigate();
 
   const [dummyData, setDummyData] = useState([
     {
@@ -16,50 +17,59 @@ const Nav = () => {
       mentoName: '유시온',
     },
   ]);
+  const [token, setToken] = useState(false);
 
   return (
     <>
       <S.NavBarContainer>
         <S.TitleLogoWrap>
           <S.TitleImg src={MOON_LOGO} alt="로고" />
-          <S.Title>달거리</S.Title>
+          <S.Title onClick={() => navigate('/')}>달거리</S.Title>
         </S.TitleLogoWrap>
 
-        <S.NavInfoContainer>
-          <S.LinkWrap linkName={'/'} pathName={pathname}>
-            <Link className="link" to={'/'}>
-              자주묻는 질문
-            </Link>
-          </S.LinkWrap>
+        {token ? (
+          <S.NavInfoContainer>
+            <S.LinkWrap linkName={'/'} pathName={pathname}>
+              <Link className="link" to={'/'}>
+                자주묻는 질문
+              </Link>
+            </S.LinkWrap>
 
-          <S.LinkWrap linkName={'/conncet'} pathName={pathname}>
-            <Link className="link" to={'conncet'}>
-              멘토링
-            </Link>
-          </S.LinkWrap>
+            <S.LinkWrap linkName={'/conncet'} pathName={pathname}>
+              <Link className="link" to={'conncet'}>
+                멘토링
+              </Link>
+            </S.LinkWrap>
 
-          <S.LinkWrap linkName={'/community'} pathName={pathname}>
-            <Link className="link" to={'community'}>
-              커뮤니티
-            </Link>
-          </S.LinkWrap>
+            <S.LinkWrap linkName={'/community'} pathName={pathname}>
+              <Link className="link" to={'community'}>
+                커뮤니티
+              </Link>
+            </S.LinkWrap>
 
-          <div
-            style={{
-              fontSize: '1.4rem',
-              display: 'flex',
-              gap: '15px',
-              marginLeft: '20px',
-            }}
-          >
-            <BsBell
-              style={{ cursor: 'pointer' }}
-              onClick={() => setIsAlarmModal(prev => !prev)}
-            />
-            <BsPersonCircle />
-          </div>
-        </S.NavInfoContainer>
+            <div
+              style={{
+                fontSize: '1.4rem',
+                display: 'flex',
+                gap: '15px',
+                marginLeft: '20px',
+              }}
+            >
+              <BsBell
+                style={{ cursor: 'pointer' }}
+                onClick={() => setIsAlarmModal(prev => !prev)}
+              />
+              <BsPersonCircle />
+            </div>
+          </S.NavInfoContainer>
+        ) : (
+          <S.OauthContainer>
+            <S.SignUp onClick={() => navigate('login')}>회원가입</S.SignUp>
+            <S.SignIn onClick={() => navigate('login')}>로그인</S.SignIn>
+          </S.OauthContainer>
+        )}
       </S.NavBarContainer>
+
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
