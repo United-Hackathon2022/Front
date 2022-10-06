@@ -9,8 +9,3 @@ export const ShowMentoringModal = atom({
   key: 'ShowMentoringModal',
   default: false,
 });
-
-export const AddFeed = atom({
-  key: 'AddFeed',
-  default: false,
-});
