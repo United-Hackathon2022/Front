@@ -25,6 +25,7 @@ export function GlobalStyle() {
 
         body {
           font-family: 'TmoneyRoundWindRegular', sans-serif;
+          background: #f5f5f5;
         }
 
         a {

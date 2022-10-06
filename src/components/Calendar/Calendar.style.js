@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
-import { palette } from '../../palette';
+import { palette } from '../../shared/styles/palette';
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
+  width: 1052px;
+  margin: 0 auto;
   background: #f5f5f5;
 `;
 
 export const View = styled.div`
-  width: 1052px;
+  width: 100%;
   height: 253px;
-  background: #ffc979;
+  background: ${palette.main};
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -18,15 +19,56 @@ export const View = styled.div`
   align-items: center;
 `;
 
+export const Circle = styled.div`
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+`;
+
+export const Desc = styled.p`
+  font-size: 16px;
+  line-height: 18px;
+`;
+
+export const Date = styled.p`
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 31px;
+  margin: 20px 0 15px;
+`;
+
 export const SettingTitle = styled.h1`
   font-size: 40px;
+  font-family: 'TmoneyRoundWindExtraBold';
+  color: #515151;
+  margin-bottom: 30px;
+`;
+
+export const SettingDesc = styled.button`
+  width: 200px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  font-family: 'TmoneyRoundWindExtraBold';
+  font-size: 20px;
+  line-height: 26px;
+
+  color: #515151;
+  border: none;
+  cursor: pointer;
 `;
 
 export const Calendar = styled.div`
-  width: 1052px;
-  height: 690px;
+  width: 100%;
+  height: 800px;
   margin: 0 auto;
-  border: 1px solid ${({ theme }) => theme.borderColor};
+  border: 1px solid #f0eff2 !important ;
   background-color: ${({ theme }) => theme.backgroundColor};
   margin-top: auto;
   overflow: hidden;
@@ -53,11 +95,11 @@ export const Calendar = styled.div`
   }
 
   .toastui-calendar-weekday-grid {
-    border-top: 1px solid ${({ theme }) => theme.borderColor} !important;
+    border-top: 1px solid #f0eff2 !important;
   }
 
   .toastui-calendar-daygrid-cell + .toastui-calendar-daygrid-cell {
-    border-left: 1px solid ${({ theme }) => theme.borderColor} !important;
+    border-left: 1px solid #f0eff2 !important;
   }
 
   .toastui-calendar-grid-cell-date {

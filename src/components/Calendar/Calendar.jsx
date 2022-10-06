@@ -9,14 +9,21 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 
 function CalendarComponent() {
-  const [isSetting, setIsSetting] = useState(false);
+  const [isSetting, setIsSetting] = useState(true);
   return (
     <S.Container>
       <S.View>
         {isSetting ? (
-          <div></div>
+          <S.Circle>
+            <S.Desc>생리</S.Desc>
+            <S.Date>1일째</S.Date>
+            <S.Desc>생리 주기는 28일 입니다.</S.Desc>
+          </S.Circle>
         ) : (
-          <S.SettingTitle>아직 주기를 설정하지 않으셨나요?</S.SettingTitle>
+          <>
+            <S.SettingTitle>아직 주기를 설정하지 않으셨나요?</S.SettingTitle>
+            <S.SettingDesc>설정하러가기</S.SettingDesc>
+          </>
         )}
       </S.View>
       <S.Calendar>
