@@ -83,7 +83,9 @@ const Nav = () => {
                 style={{ cursor: 'pointer' }}
                 onClick={() => setIsAlarmModal(prev => !prev)}
               />
-              <BsPersonCircle />
+              <Link to="user">
+                <BsPersonCircle />
+              </Link>
             </div>
           </S.NavInfoContainer>
         ) : (

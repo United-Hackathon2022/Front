@@ -32,7 +32,7 @@ const User = () => {
             {/* <div>{userData && userData}</div> */}
             <div>1PXKA2</div>
           </S.UserInfo>
-          <S.FollowNumber>팔로잉 6 | 팔로워 7</S.FollowNumber>
+          {/* <S.FollowNumber>팔로잉 6 | 팔로워 7</S.FollowNumber> */}
         </div>
       </S.UserInfoContainer>
     </S.UserContainer>
