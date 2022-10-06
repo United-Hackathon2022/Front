@@ -15,7 +15,7 @@ export const FeedController = {
     return `/my-feed`;
   },
   getFeeds: () => {
-    return `/list?type=`;
+    return `/feeds/list?type=`;
   },
   getToken: () => {
     return `/feeds/token`;
