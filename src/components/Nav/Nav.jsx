@@ -3,6 +3,10 @@ import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { BsPersonCircle, BsBell } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import LoginModal from '../modals/LoginModal';
+import MentoringModal from '../modals/MentoringModal';
+import { useRecoilState } from 'recoil';
+import { ShowLoginModal, ShowMentoringModal } from '../../Atoms';
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -18,6 +22,10 @@ const Nav = () => {
     },
   ]);
   const [token, setToken] = useState(false);
+
+  const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
+  const [showMentoringModal, setShowMentoringModal] =
+    useRecoilState(ShowMentoringModal);
 
   return (
     <>
@@ -35,10 +43,14 @@ const Nav = () => {
               </Link>
             </S.LinkWrap>
 
-            <S.LinkWrap linkName={'/conncet'} pathName={pathname}>
-              <Link className="link" to={'conncet'}>
-                멘토링
-              </Link>
+            <S.LinkWrap
+              linkName={'/conncet'}
+              pathName={pathname}
+              onClick={() => {
+                setShowMentoringModal(!showMentoringModal);
+              }}
+            >
+              <Link className="link">멘토링</Link>
             </S.LinkWrap>
 
             <S.LinkWrap linkName={'/community'} pathName={pathname}>
@@ -64,12 +76,26 @@ const Nav = () => {
           </S.NavInfoContainer>
         ) : (
           <S.OauthContainer>
-            <S.SignUp onClick={() => navigate('login')}>회원가입</S.SignUp>
-            <S.SignIn onClick={() => navigate('login')}>로그인</S.SignIn>
+            <S.SignUp
+              onClick={() => {
+                setShowLoginModal(!showLoginModal);
+              }}
+            >
+              회원가입
+            </S.SignUp>
+            <S.SignIn
+              onClick={() => {
+                setShowLoginModal(!showLoginModal);
+              }}
+            >
+              로그인
+            </S.SignIn>
           </S.OauthContainer>
         )}
       </S.NavBarContainer>
 
+      {showLoginModal && <LoginModal />}
+      {showMentoringModal && <MentoringModal />}
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
