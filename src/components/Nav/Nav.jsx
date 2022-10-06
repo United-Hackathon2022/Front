@@ -3,6 +3,9 @@ import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { BsPersonCircle, BsBell } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import LoginModal from '../modals/LoginModal';
+import { useRecoilState } from 'recoil';
+import { ShowLoginModal } from '../../Atoms';
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -19,6 +22,7 @@ const Nav = () => {
   ]);
   const [token, setToken] = useState(false);
 
+  const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
   return (
     <>
       <S.NavBarContainer>
@@ -64,12 +68,25 @@ const Nav = () => {
           </S.NavInfoContainer>
         ) : (
           <S.OauthContainer>
-            <S.SignUp onClick={() => navigate('login')}>회원가입</S.SignUp>
-            <S.SignIn onClick={() => navigate('login')}>로그인</S.SignIn>
+            <S.SignUp
+              onClick={() => {
+                setShowLoginModal(!showLoginModal);
+              }}
+            >
+              회원가입
+            </S.SignUp>
+            <S.SignIn
+              onClick={() => {
+                setShowLoginModal(!showLoginModal);
+              }}
+            >
+              로그인
+            </S.SignIn>
           </S.OauthContainer>
         )}
       </S.NavBarContainer>
 
+      {showLoginModal && <LoginModal />}
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
