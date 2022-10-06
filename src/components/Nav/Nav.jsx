@@ -22,8 +22,8 @@ const Nav = () => {
       mentoName: '유시온',
     },
   ]);
-  const [token, setToken] = useState(false);
 
+  const [token, setToken] = useState(false);
   const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
   const [showMentoringModal, setShowMentoringModal] =
     useRecoilState(ShowMentoringModal);
@@ -55,6 +55,12 @@ const Nav = () => {
               </Link>
             </S.LinkWrap>
 
+            <S.LinkWrap linkName={'/community'} pathName={pathname}>
+              <Link className="link" to={'community'}>
+                커뮤니티
+              </Link>
+            </S.LinkWrap>
+
             <S.LinkWrap
               linkName={'/conncet'}
               pathName={pathname}
@@ -62,13 +68,7 @@ const Nav = () => {
                 setShowMentoringModal(!showMentoringModal);
               }}
             >
-              <Link className="link">멘토링</Link>
-            </S.LinkWrap>
-
-            <S.LinkWrap linkName={'/community'} pathName={pathname}>
-              <Link className="link" to={'community'}>
-                커뮤니티
-              </Link>
+              <Link className="link">멘토링 하기</Link>
             </S.LinkWrap>
 
             <div
