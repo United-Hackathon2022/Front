@@ -1,14 +1,17 @@
 import { useRecoilState } from 'recoil';
-import { ShowLoginModal } from '../../Atoms';
+import { ShowLoginModal, ShowMentoringModal } from '../../Atoms';
 import * as S from './Modals.style';
 
 const ModalContainer = ({ svg, title, desc, children }) => {
   const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
+  const [showMentoringModal, setShowMentoringModal] =
+    useRecoilState(ShowMentoringModal);
 
   return (
     <S.Background
       onClick={() => {
-        setShowLoginModal(!showLoginModal);
+        showLoginModal && setShowLoginModal(!showLoginModal);
+        showMentoringModal && setShowMentoringModal(!showMentoringModal);
       }}
     >
       <S.Modal

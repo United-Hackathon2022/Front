@@ -4,8 +4,9 @@ import { BsPersonCircle, BsBell } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import LoginModal from '../modals/LoginModal';
+import MentoringModal from '../modals/MentoringModal';
 import { useRecoilState } from 'recoil';
-import { ShowLoginModal } from '../../Atoms';
+import { ShowLoginModal, ShowMentoringModal } from '../../Atoms';
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -23,6 +24,9 @@ const Nav = () => {
   const [token, setToken] = useState(false);
 
   const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
+  const [showMentoringModal, setShowMentoringModal] =
+    useRecoilState(ShowMentoringModal);
+
   return (
     <>
       <S.NavBarContainer>
@@ -39,10 +43,14 @@ const Nav = () => {
               </Link>
             </S.LinkWrap>
 
-            <S.LinkWrap linkName={'/conncet'} pathName={pathname}>
-              <Link className="link" to={'conncet'}>
-                멘토링
-              </Link>
+            <S.LinkWrap
+              linkName={'/conncet'}
+              pathName={pathname}
+              onClick={() => {
+                setShowMentoringModal(!showMentoringModal);
+              }}
+            >
+              <Link className="link">멘토링</Link>
             </S.LinkWrap>
 
             <S.LinkWrap linkName={'/community'} pathName={pathname}>
@@ -87,6 +95,7 @@ const Nav = () => {
       </S.NavBarContainer>
 
       {showLoginModal && <LoginModal />}
+      {showMentoringModal && <MentoringModal />}
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
