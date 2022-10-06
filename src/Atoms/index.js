@@ -1,0 +1,6 @@
+import { atom } from 'recoil';
+
+export const ShowLoginModal = atom({
+  key: 'ShowLoginModal',
+  default: false,
+});
