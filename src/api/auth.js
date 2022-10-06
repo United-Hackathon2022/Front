@@ -5,11 +5,12 @@ class Auth {
   /**
    * @returns 네이버 로그인
    */
-  signin() {
+  signin(data) {
     try {
       return RequestApi({
-        method: 'POST',
+        method: 'GET',
         url: AuthController.signin(),
+        data: data,
       });
     } catch (error) {
       return error;
