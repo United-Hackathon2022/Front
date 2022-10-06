@@ -17,6 +17,9 @@ export const FeedController = {
   joboffer: () => {
     return `/feed/job-offer`;
   },
+  getToken: () => {
+    return `/feeds/token`;
+  },
 };
 
 export const UsersController = {

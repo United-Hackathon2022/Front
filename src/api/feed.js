@@ -73,6 +73,20 @@ class Feed {
       return error;
     }
   }
+
+  /**
+   * @returns - 피드 수정
+   */
+  getToken() {
+    try {
+      return RequestApi({
+        method: 'GET',
+        url: FeedController.getToken(),
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default new Feed();
