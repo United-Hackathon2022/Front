@@ -3,6 +3,7 @@ export const AuthController = {
     return `/auth/naver/redirect`;
   },
 };
+
 export const FeedController = {
   feed: () => {
     return `/feed`;
