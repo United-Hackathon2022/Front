@@ -10,6 +10,7 @@ const Router = () => {
         <Route path="user" element={<C.Main />} />
         <Route path="conncet" element={<C.Connect />} />
         <Route path="community" element={<C.Community />} />
+        <Route path="faq" element={<C.Community />} />
       </Routes>
     </BrowserRouter>
   );
