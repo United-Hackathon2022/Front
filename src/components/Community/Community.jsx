@@ -55,9 +55,7 @@ const Community = () => {
       </S.SelectSection>
       <S.FeedSection>
         {list?.map((feed, i) => {
-          return (
-            watch('type') === feed.type && <Feed feed={feed} key={i} id={i} />
-          );
+          return watch('type') === feed.type && <Feed feed={feed} key={i} />;
         })}
       </S.FeedSection>
     </S.Body>
