@@ -1,10 +1,7 @@
-//import {  } from "./Nav.style.js";
+import * as S from './Nav.style';
+
 const Nav = () => {
-  return (
-    <>
-      <div />
-    </>
-  );
+  return <S.NavBarContainer></S.NavBarContainer>;
 };
 
 export default Nav;

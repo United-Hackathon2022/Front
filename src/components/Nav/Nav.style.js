@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled from '@emotion/styled';
+import { palette } from '../../palette';
 
-// export const Style = styled.div`
-//  display: flex;
-// `;
-//
+export const NavBarContainer = styled.div`
+  height: 60px;
+  display: flex;
+  box-shadow: 4px 0 10px 2px ${palette.gray[300]};
+`;

@@ -7,7 +7,7 @@ const Router = () => {
       <C.Nav />
       <Routes>
         <Route path="/" element={<C.Main />} />
-        <Route path="/user" element={<C.Main />} />
+        <Route path="user" element={<C.Main />} />
         <Route path="login" element={<C.Login />} />
         <Route path="conncet" element={<C.Connect />} />
         <Route path="community" element={<C.Community />} />
