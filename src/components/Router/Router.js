@@ -5,9 +5,10 @@ const Router = () => {
   return (
     <BrowserRouter>
       <C.Nav />
+      <C.Chat />
       <Routes>
         <Route path="/" element={<C.Main />} />
-        <Route path="user" element={<C.Main />} />
+        <Route path="user" element={<C.User />} />
         <Route path="conncet" element={<C.Connect />} />
         <Route path="community" element={<C.Community />} />
       </Routes>
