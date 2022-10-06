@@ -72,6 +72,7 @@ export const AlarmContainer = styled.div`
   align-items: center;
   border-top: 1px solid ${palette.gray[300]};
   font-size: 0.95rem;
+  overflow: auto;
 `;
 
 export const MentoName = styled.div`
@@ -100,4 +101,10 @@ export const Cancel = styled.button`
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid ${palette.gray[300]};
+`;
+
+export const NullContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

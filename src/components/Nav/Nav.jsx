@@ -63,18 +63,22 @@ const Nav = () => {
       {isAlarmModal && (
         <S.Modal>
           <S.Tail />
-          {dummyData.map((item, idx) => {
-            return (
-              <S.AlarmContainer key={idx + 1}>
-                <S.MentoName>{item.mentoName} </S.MentoName> 님이 멘토링을
-                신청하였습니다.
-                <S.AllowBtnContainer>
-                  <S.AllowBtn>승인</S.AllowBtn>
-                  <S.Cancel>거절</S.Cancel>
-                </S.AllowBtnContainer>
-              </S.AlarmContainer>
-            );
-          })}
+          {dummyData ? (
+            dummyData.map((item, idx) => {
+              return (
+                <S.AlarmContainer key={idx + 1}>
+                  <S.MentoName>{item.mentoName} </S.MentoName> 님이 멘토링을
+                  신청하였습니다.
+                  <S.AllowBtnContainer>
+                    <S.AllowBtn>승인</S.AllowBtn>
+                    <S.Cancel>거절</S.Cancel>
+                  </S.AllowBtnContainer>
+                </S.AlarmContainer>
+              );
+            })
+          ) : (
+            <S.NullContent>알림이 없습니다.</S.NullContent>
+          )}
         </S.Modal>
       )}
     </>
