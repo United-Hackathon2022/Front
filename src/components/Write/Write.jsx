@@ -2,11 +2,19 @@ import * as S from './Write.style';
 import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { useForm } from 'react-hook-form';
 import Feed from '../../api/feed';
+import { feedList } from '../Community/Community';
+import feed from '../../api/feed';
+import { useRecoilState } from 'recoil';
+import { AddFeed } from '../../Atoms';
+
 const Write = () => {
+  const [addFeed, setAddFeed] = useRecoilState(AddFeed);
   const { register, handleSubmit } = useForm();
   const onValid = async data => {
+    console.log(feedList);
     console.log(data);
-    await Feed.postFeed({ data });
+    setAddFeed(true);
+    data && (await Feed.postFeed({ data }));
   };
 
   const inValid = errors => {
@@ -50,7 +58,7 @@ const Write = () => {
           placeholder="당신의 이야기를 적어보세요..."
           {...register('content', { required: true })}
         />
-        <S.Button>등록하기</S.Button>
+        <S.Button type="submit">등록하기</S.Button>
       </S.WriteSection>
     </S.Body>
   );

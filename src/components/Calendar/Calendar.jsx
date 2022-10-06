@@ -1,18 +1,20 @@
 import * as S from './Calendar.style';
 import 'react-calendar/dist/Calendar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
+import { useLocation } from 'react-router-dom';
 
 function CalendarComponent() {
   const token = window.localStorage.getItem('accessToken');
   const [isSetting, setIsSetting] = useState(false);
+
   return (
     <S.Container>
       <S.View>
-        {isSetting || token ? (
+        {isSetting ? (
           <S.Circle>
             <S.Desc>생리</S.Desc>
             <S.Date>1일째</S.Date>

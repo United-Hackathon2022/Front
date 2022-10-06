@@ -2,11 +2,12 @@ import * as S from './Nav.style';
 import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { BsPersonCircle, BsBell } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginModal from '../modals/LoginModal';
 import MentoringModal from '../modals/MentoringModal';
 import { useRecoilState } from 'recoil';
 import { ShowLoginModal, ShowMentoringModal } from '../../Atoms';
+import { toast } from 'react-toastify';
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -26,6 +27,17 @@ const Nav = () => {
   const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
   const [showMentoringModal, setShowMentoringModal] =
     useRecoilState(ShowMentoringModal);
+
+  const location = useLocation();
+
+  const code = location.search.split('=')[1];
+  useEffect(() => {
+    // code && setToken(true);
+    if (code) {
+      setToken(true);
+      toast.success('로그인에 성공했습니다.');
+    }
+  }, []);
 
   return (
     <>
