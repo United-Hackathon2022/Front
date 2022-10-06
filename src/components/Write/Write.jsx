@@ -2,19 +2,18 @@ import * as S from './Write.style';
 import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { useForm } from 'react-hook-form';
 import Feed from '../../api/feed';
-import { feedList } from '../Community/Community';
-import feed from '../../api/feed';
-import { useRecoilState } from 'recoil';
-import { AddFeed } from '../../Atoms';
+
+import { toast } from 'react-toastify';
 
 const Write = () => {
-  const [addFeed, setAddFeed] = useRecoilState(AddFeed);
   const { register, handleSubmit } = useForm();
   const onValid = async data => {
-    console.log(feedList);
-    console.log(data);
-    setAddFeed(true);
-    data && (await Feed.postFeed({ data }));
+    await Feed.postFeed({
+      title: data.title,
+      content: data.content,
+      type: data.type,
+    });
+    toast.success('게시글 작성이 완료되었습니다.');
   };
 
   const inValid = errors => {

@@ -1,38 +1,54 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as S from './Community.style';
 import feed from '../../../api/feed';
-import { feedList } from '../../Community/Community';
+import comments from '../../../api/comments';
+import PROFILE from '../../../assets/icon/profile.svg';
 import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const FeedModal = () => {
+  const { register, handleSubmit } = useForm();
   const { id } = useParams();
+  const [feedData, setFeed] = useState();
+
   const getFeed = async () => {
-    const res = await feed.getFeed(id);
-    console.log(res);
+    const { data } = await feed.getFeed(id);
+    setFeed(data);
   };
 
   useEffect(() => {
     getFeed();
   }, []);
 
+  console.log(feedData);
+  const TrySubmit = async data => {
+    await comments.postComment({ content: data.content, feedId: id }, id);
+  };
   return (
     <>
-      <S.Feed>
-        <S.ProfileSection>
-          <S.Profile src={feedList[id].user.profileImage} />
-          <p>{feedList[id].user.name}</p>
-        </S.ProfileSection>
-        <S.ContentSection>
-          <S.Title>{feedList[id].title}</S.Title>
-          <S.Desc>{feedList[id].content}</S.Desc>
-        </S.ContentSection>
-      </S.Feed>
-      <S.Comment>
-        <p>{feedList[id].other?.name}</p>
-        {feedList[id].other?.comment}
-        <p>{feedList[id].other?.answe && feedList[id].user.name}</p>
-        {feedList[id].other?.answer}
-      </S.Comment>
+      {feedData && (
+        <div>
+          {' '}
+          <S.Feed>
+            <S.ProfileSection>
+              <S.Profile src={PROFILE} />
+              <p>{feedData.user.name}</p>
+            </S.ProfileSection>
+            <S.ContentSection>
+              <S.Title>{feedData.title}</S.Title>
+              <S.Desc>{feedData.content}</S.Desc>
+            </S.ContentSection>
+          </S.Feed>
+          <S.Comment>
+            <p>{feedData.comments?.name}</p>
+            {feedData.comments?.comment}
+          </S.Comment>
+          <form onSubmit={handleSubmit(TrySubmit)}>
+            <input placeholder="댓글달기" {...register('content')} />
+            <button>전송</button>
+          </form>
+        </div>
+      )}
     </>
   );
 };

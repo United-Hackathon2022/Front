@@ -5,7 +5,7 @@ import PROFILE from '../../assets/icon/profile.svg';
 const Feed = ({ feed, id }) => {
   console.log(feed);
   return (
-    <Link to={`/community/${id}`}>
+    <Link to={`/community/${id + 1}`}>
       <S.Feed>
         <S.ProfileSection>
           <S.Profile src={PROFILE} />
