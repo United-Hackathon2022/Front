@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../shared/styles/palette';
 
 export const Body = styled.div`
   width: 578px;
@@ -45,7 +46,7 @@ export const ImgSection = styled.div`
     display: inline-block;
     width: 70px;
     height: 5px;
-    background: #ffcf4f;
+    background-color: ${palette.main};
     border: none;
   }
   img {
@@ -70,7 +71,7 @@ export const TypeSection = styled.div`
   }
 
   label > input:checked + div {
-    color: #ffcf4f;
+    color: ${palette.main};
   }
 `;
 
@@ -85,7 +86,7 @@ export const ContentInput = styled.textarea`
 export const Button = styled.button`
   width: 478px;
   height: 48px;
-  background: #ffcf4f;
+  background-color: ${palette.main};
   border-radius: 6px;
   border: none;
   font-size: 21px;

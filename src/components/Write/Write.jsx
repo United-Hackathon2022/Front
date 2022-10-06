@@ -28,7 +28,6 @@ const Write = () => {
           <p>종류</p>
           <label>
             <input
-              className="question"
               id="type"
               value="QUESTION"
               type="radio"
@@ -39,7 +38,6 @@ const Write = () => {
 
           <label>
             <input
-              className="jobOffer"
               value="JOB_OFFER"
               id="type"
               type="radio"
