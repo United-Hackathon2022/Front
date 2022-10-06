@@ -12,6 +12,14 @@ export const View = styled.div`
   height: 253px;
   background: #ffc979;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SettingTitle = styled.h1`
+  font-size: 40px;
 `;
 
 export const Calendar = styled.div`

@@ -9,9 +9,16 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 
 function CalendarComponent() {
+  const [isSetting, setIsSetting] = useState(false);
   return (
     <S.Container>
-      <S.View></S.View>
+      <S.View>
+        {isSetting ? (
+          <div></div>
+        ) : (
+          <S.SettingTitle>아직 주기를 설정하지 않으셨나요?</S.SettingTitle>
+        )}
+      </S.View>
       <S.Calendar>
         <Calendar
           height="900px"
