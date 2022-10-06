@@ -20,11 +20,11 @@ class Feed {
   /**
    * @returns - 피드목록 조회
    */
-  getAllFeeds() {
+  getAllFeeds(type) {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.joboffer(),
+        url: FeedController.getFeeds() + { type },
       });
     } catch (error) {
       return error;

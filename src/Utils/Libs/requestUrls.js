@@ -14,8 +14,8 @@ export const FeedController = {
   myfeed: () => {
     return `/my-feed`;
   },
-  joboffer: () => {
-    return `/feed/job-offer`;
+  getFeeds: () => {
+    return `/feed/list$feedType=`;
   },
   getToken: () => {
     return `/feeds/token`;
