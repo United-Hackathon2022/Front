@@ -91,3 +91,17 @@ export const MessageCircleWrap = styled.div`
   border-radius: 50px;
   box-shadow: 0 0 10px 2px ${palette.gray[300]};
 `;
+
+export const Number = styled.div`
+  position: fixed;
+  right: 55px;
+  bottom: 47px;
+  padding: 5px 8px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f96666;
+  font-size: 1rem;
+  color: #fff;
+`;

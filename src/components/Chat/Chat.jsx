@@ -8,7 +8,7 @@ const Chat = () => {
   return (
     <>
       {isChatting ? (
-        <S.ChatContainer>
+        <S.ChatContainer className="animate__animated animate__backInRight">
           <S.ChatHeader>
             <S.HeaderProfile />
             <S.HeaderName>찰리</S.HeaderName>
@@ -32,9 +32,12 @@ const Chat = () => {
           보내기
         </S.ChatContainer>
       ) : (
-        <S.MessageCircleWrap onClick={() => setIsChatting(prev => !prev)}>
-          <FiMessageCircle />
-        </S.MessageCircleWrap>
+        <div>
+          <S.MessageCircleWrap onClick={() => setIsChatting(prev => !prev)}>
+            <FiMessageCircle />
+          </S.MessageCircleWrap>
+          <S.Number> 1 </S.Number>
+        </div>
       )}
     </>
   );

@@ -32,7 +32,7 @@ export const Circle = styled.div`
 `;
 
 export const Desc = styled.p`
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 18px;
 `;
 
@@ -46,7 +46,7 @@ export const Date = styled.p`
 export const SettingTitle = styled.h1`
   font-size: 40px;
   font-family: 'TmoneyRoundWindExtraBold';
-  color: #515151;
+  color: #fff;
   margin-bottom: 30px;
 `;
 
@@ -58,10 +58,13 @@ export const SettingDesc = styled.button`
   font-family: 'TmoneyRoundWindExtraBold';
   font-size: 20px;
   line-height: 26px;
-
   color: #515151;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 export const Calendar = styled.div`
