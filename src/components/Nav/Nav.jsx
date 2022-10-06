@@ -35,7 +35,7 @@ const Nav = () => {
           <S.Title onClick={() => navigate('/')}>달거리</S.Title>
         </S.TitleLogoWrap>
 
-        {!token ? (
+        {token ? (
           <S.NavInfoContainer>
             <S.LinkWrap linkName={'/'} pathName={pathname}>
               <Link className="link" to={'/'}>
