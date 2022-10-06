@@ -21,8 +21,8 @@ const Nav = () => {
       mentoName: '유시온',
     },
   ]);
-  const [token, setToken] = useState(false);
 
+  const [token, setToken] = useState(false);
   const [showLoginModal, setShowLoginModal] = useRecoilState(ShowLoginModal);
   const [showMentoringModal, setShowMentoringModal] =
     useRecoilState(ShowMentoringModal);
@@ -35,11 +35,17 @@ const Nav = () => {
           <S.Title onClick={() => navigate('/')}>달거리</S.Title>
         </S.TitleLogoWrap>
 
-        {token ? (
+        {!token ? (
           <S.NavInfoContainer>
             <S.LinkWrap linkName={'/'} pathName={pathname}>
               <Link className="link" to={'/'}>
                 자주묻는 질문
+              </Link>
+            </S.LinkWrap>
+
+            <S.LinkWrap linkName={'/community'} pathName={pathname}>
+              <Link className="link" to={'community'}>
+                커뮤니티
               </Link>
             </S.LinkWrap>
 
@@ -50,13 +56,7 @@ const Nav = () => {
                 setShowMentoringModal(!showMentoringModal);
               }}
             >
-              <Link className="link">멘토링</Link>
-            </S.LinkWrap>
-
-            <S.LinkWrap linkName={'/community'} pathName={pathname}>
-              <Link className="link" to={'community'}>
-                커뮤니티
-              </Link>
+              <Link className="link">멘토링 하기</Link>
             </S.LinkWrap>
 
             <div
