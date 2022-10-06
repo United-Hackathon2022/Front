@@ -6,6 +6,8 @@ import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 import PERSON from '../../assets/modal_img/person.svg';
+import { BsXLg } from 'react-icons/bs';
+import { Right } from '../ModalContainer/Modals.style';
 
 function CalendarComponent() {
   const token = window.localStorage.getItem('accessToken');
@@ -39,6 +41,17 @@ function CalendarComponent() {
 
               <S.RightWrap>
                 <S.SelectWrap>
+                  <BsXLg
+                    style={{
+                      width: ' 0.8rem',
+                      color: '#333',
+                      position: 'relative',
+                      right: '-415px',
+                      bottom: '15px',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => setIsCycleModal(false)}
+                  />
                   <div># 최근에 월경을 시작한 날짜가 언제인가요?</div>
                   <S.DateContainer>
                     <S.DateWrap>
