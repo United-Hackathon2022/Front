@@ -8,7 +8,7 @@ export const Body = styled.div`
   align-items: flex-end;
 `;
 
-export const WriteSection = styled.div`
+export const WriteSection = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -53,7 +53,29 @@ export const ImgSection = styled.div`
   }
 `;
 
+export const TypeSection = styled.div`
+  display: flex;
+  width: 154px;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 22px;
+  color: #515151;
+  input {
+    display: none;
+  }
+
+  label > div {
+    cursor: pointer;
+    color: #cfcfcf;
+  }
+
+  label > input:checked + div {
+    color: #ffcf4f;
+  }
+`;
+
 export const ContentInput = styled.textarea`
+  margin-top: 15px;
   font-size: 14px;
   color: #8e8e8e;
   resize: none;
