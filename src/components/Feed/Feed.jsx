@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import * as S from './Feed.style';
+import PROFILE from '../../assets/icon/profile.svg';
 
 const Feed = ({ feed, id }) => {
+  console.log(feed);
   return (
     <Link to={`/community/${id}`}>
       <S.Feed>
         <S.ProfileSection>
-          <S.Profile src={feed.user.profileImage} />
+          <S.Profile src={PROFILE} />
           <p>{feed.user.name}</p>
         </S.ProfileSection>
         <S.ContentSection>
