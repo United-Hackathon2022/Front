@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as S from './Community.style';
+import * as S from './FeedModal.style';
 import feed from '../../../api/feed';
 import comments from '../../../api/comments';
 import PROFILE from '../../../assets/icon/profile.svg';
@@ -40,7 +40,7 @@ const FeedModal = () => {
             </S.ContentSection>
           </S.Feed>
           <S.Comment>
-            <p>{feedData.comments?.name}</p>
+            <p>{feedData.comments?.user?.name}</p>
             {feedData.comments?.comment}
           </S.Comment>
           <form onSubmit={handleSubmit(TrySubmit)}>
