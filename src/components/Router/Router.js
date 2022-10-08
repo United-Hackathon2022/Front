@@ -12,6 +12,7 @@ const Router = () => {
         <Route path="conncet" element={<C.Connect />} />
         <Route path="community" element={<C.Community />} />
         <Route path="community/write" element={<C.Write />} />
+        <Route path="community/:id" element={<C.FeedModal />} />
       </Routes>
     </BrowserRouter>
   );

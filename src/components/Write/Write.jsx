@@ -2,11 +2,18 @@ import * as S from './Write.style';
 import MOON_LOGO from '../../assets/logo_img/moon.svg';
 import { useForm } from 'react-hook-form';
 import Feed from '../../api/feed';
+
+import { toast } from 'react-toastify';
+
 const Write = () => {
   const { register, handleSubmit } = useForm();
   const onValid = async data => {
-    console.log(data);
-    await Feed.postFeed({ data });
+    await Feed.postFeed({
+      title: data.title,
+      content: data.content,
+      type: data.type,
+    });
+    toast.success('게시글 작성이 완료되었습니다.');
   };
 
   const inValid = errors => {
@@ -50,7 +57,7 @@ const Write = () => {
           placeholder="당신의 이야기를 적어보세요..."
           {...register('content', { required: true })}
         />
-        <S.Button>등록하기</S.Button>
+        <S.Button type="submit">등록하기</S.Button>
       </S.WriteSection>
     </S.Body>
   );

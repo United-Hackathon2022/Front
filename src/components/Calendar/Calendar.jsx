@@ -1,10 +1,12 @@
 import * as S from './Calendar.style';
 import 'react-calendar/dist/Calendar.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
+import { useLocation } from 'react-router-dom';
+
 import PERSON from '../../assets/modal_img/person.svg';
 import { BsXLg } from 'react-icons/bs';
 import { Right } from '../ModalContainer/Modals.style';
@@ -12,9 +14,11 @@ import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
 import { MenstrualCycle } from '../../Atoms';
 
+
 function CalendarComponent() {
   const token = window.localStorage.getItem('accessToken');
   const [isSetting, setIsSetting] = useState(false);
+
   const [isCycleModal, setIsCycleModal] = useState(false);
   // const { register, handleSubmit } = useForm();
   const [cycle, setCycle] = useRecoilState(MenstrualCycle);
@@ -25,10 +29,11 @@ function CalendarComponent() {
     endMonth: '',
   });
 
+
   return (
     <S.Container>
       <S.View>
-        {isSetting || token ? (
+        {isSetting ? (
           <S.Circle>
             <S.Desc>월경</S.Desc>
             <S.Date>

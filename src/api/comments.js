@@ -1,5 +1,5 @@
 import RequestApi from '../Utils/Libs/requestApi';
-import { UsersController } from '../Utils/Libs/requestUrls';
+import { CommentsController } from '../Utils/Libs/requestUrls';
 
 class Comments {
   /**
@@ -9,7 +9,7 @@ class Comments {
     try {
       return RequestApi({
         method: 'POST',
-        url: UsersController.users() + `/${id}`,
+        url: CommentsController.comments() + `/${id}`,
         data,
       });
     } catch (error) {
@@ -24,7 +24,7 @@ class Comments {
     try {
       return RequestApi({
         method: 'POST',
-        url: UsersController.users() + `/${id}`,
+        url: CommentsController.comments() + `/${id}`,
       });
     } catch (error) {
       return error;
@@ -38,7 +38,7 @@ class Comments {
     try {
       return RequestApi({
         method: 'patch',
-        url: UsersController.users() + `/${id}`,
+        url: CommentsController.comments() + `/${id}`,
         data,
       });
     } catch (error) {
@@ -53,7 +53,7 @@ class Comments {
     try {
       return RequestApi({
         method: 'GET',
-        url: UsersController.users() + `/${id}`,
+        url: CommentsController.comments() + `/${id}`,
       });
     } catch (error) {
       return error;

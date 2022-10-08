@@ -6,7 +6,7 @@ export const AuthController = {
 
 export const FeedController = {
   feed: () => {
-    return `/feed`;
+    return `/feeds`;
   },
   question: () => {
     return `/feed/question`;
@@ -14,8 +14,11 @@ export const FeedController = {
   myfeed: () => {
     return `/my-feed`;
   },
-  joboffer: () => {
-    return `/feed/job-offer`;
+  getFeeds: () => {
+    return `/feeds/list?type=`;
+  },
+  getToken: () => {
+    return `/feeds/token`;
   },
 };
 

@@ -20,11 +20,11 @@ class Feed {
   /**
    * @returns - 피드목록 조회
    */
-  getAllFeeds() {
+  getAllFeeds(type) {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.joboffer(),
+        url: FeedController.getFeeds() + type,
       });
     } catch (error) {
       return error;
@@ -34,11 +34,11 @@ class Feed {
   /**
    * @returns - 피드 상세 조회
    */
-  getFeed() {
+  getFeed(id) {
     try {
       return RequestApi({
         method: 'GET',
-        url: FeedController.feed(),
+        url: FeedController.feed() + `/${id}`,
       });
     } catch (error) {
       return error;
@@ -68,6 +68,20 @@ class Feed {
       return RequestApi({
         method: 'DELETE',
         url: FeedController.feed() + `/${id}`,
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  /**
+   * @returns - 피드 수정
+   */
+  getToken() {
+    try {
+      return RequestApi({
+        method: 'GET',
+        url: FeedController.getToken(),
       });
     } catch (error) {
       return error;
